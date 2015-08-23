@@ -6,4 +6,16 @@ app.get('/', function(request,response) {
     response.send("Hello World");
 });
 
-app.listen(process.env.PORT, process.env.IP);
+app.get('/:firstname/:lastname', function(request, response) {
+    var first = request.params.firstname;
+    var last = request.params.lastname;
+    response.send(["Hello", first, last].join(" "));
+})
+
+app.get('/:firstname/:lastname/:jedi', function(request, response) {
+     var first = request.params.firstname;
+    var last = request.params.lastname;
+    response.send(["Hello", first.substr(0,3), last.substr(0,2)].join(" "));
+})
+
+app.listen(8080);
